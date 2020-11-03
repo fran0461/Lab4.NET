@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Dennis Francis</h1> 
+        <br />
+        <br />
+        @Html.ActionLink("Home", "Index", "Home")
+        @Html.ActionLink("Student", "Index", "Home")
+        @Html.ActionLink("Controller", "Index", "Home")<br />
+    </header>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer>
+     </footer>
+</body>
+</html>

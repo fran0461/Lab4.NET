@@ -1,0 +1,75 @@
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>Welcome to my Index Page my name is Dennis Francis</p>
+
+<p>
+    <a asp-action="Create">CReate New</a>
+</p>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>
+               Title
+            </th>
+            <th>
+               Budget
+            </th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var item in Model.Communities)
+        {
+            string selectedRow = "";
+            if (item.ID == ViewData["Registration Number"].ToString())
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem=>item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Select</a>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+</tbody>
+    </table>
+@if (Model.Students != null)
+{
+    <h3>Students:</h3>
+    <table class="table">
+        <tr>
+            @if (Model.Students.Count() > 0)
+            {
+                <th>Student</th>
+            }
+            else
+            {
+                <th>No Students Exist</th>
+            }
+        </tr>
+        @foreach(var item in Model.Students)
+        {
+         <tr>
+            <td>
+                @item.FullName
+            </td>
+          </tr>
+        }
+    </table>
+}
